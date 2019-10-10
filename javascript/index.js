@@ -235,3 +235,28 @@ var a;
 demo(1);
 console.info(a)//100;
 console.info(f)//123;
+
+var  str= false+1;
+document.write(str)//1;
+var demo=false==1
+document.write(demo)//false;
+
+if(typeof (a) && -true+(+undefined)+""){
+	document.write('基础扎实')//进入
+}
+document.write('11'*2)//进入
+if(11+'11'*2 ==33){
+	document.write('基础扎实')//进入
+}
+
+console.info(!!" "+!!""-!!false||document.write('123'))
+
+// var x=1;
+// if(function f(){}){
+// 	x+=
+// }
+if(window.foo||(window.foo='bar')){
+	console.info(666)
+}
+console.info(window.foo||(window.foo='bar'))
+// console.info(window.foo||window.foo='bar')报错
