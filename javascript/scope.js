@@ -49,7 +49,7 @@ console.info(turnFont(123123));
 
 
 /*2.*/
-var num=parseInt(window.prompt('input'));
+// var num=parseInt(window.prompt('input'));
 function mul(n){
 	/*n的阶乘
 		递归符合思维模式
@@ -65,7 +65,7 @@ function mul(n){
 	return n*mul(n-1)
 }
 
-console.info(mul(num))
+// console.info(mul(num))
 
 /*
 规律
@@ -78,6 +78,63 @@ function fb(n){
 	}
 	return fb(n-1)+fb(n-2);
 }
-var n=parseInt(window.prompt('input'));
-console.info(fb(n))
+// var n=parseInt(window.prompt('input'));
+// console.info(fb(n))
 
+/*例子*/
+function a(){
+	function b(){
+		var b=234;
+		// var aa=444;
+		// ao的引用
+		aa=666;
+	}
+	var aa=123;
+	b();
+	console.info(aa);
+}
+var glob= 100;
+a();
+/*
+a defined a.[[scope]] -->0:GO
+a doing   a.[[scope]] -->0:aAO
+						 1:GO
+
+b defined b.[[scope]] -->0:aGO
+						 1:GO
+
+a doing   a.[[scope]] -->0:bAO
+						 1:aAO
+						 2:GO
+
+*/
+
+/*
+1.闭包
+*/
+function a1(){
+	function b(){
+		var bbb=234;
+		console.info(aaa);
+	}
+	var aaa=123;
+	return b;
+}
+var glob=100;
+var demo=a1();
+demo();
+
+/*
+2.闭包
+*/
+function scope(){
+	var num=100;
+	function b(){
+		num++;
+		console.info(num)
+	}
+	return b;
+}
+var scopeDemo=scope();
+scopeDemo()//101;
+scopeDemo()//102;
