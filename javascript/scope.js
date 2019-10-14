@@ -138,3 +138,112 @@ function scope(){
 var scopeDemo=scope();
 scopeDemo()//101;
 scopeDemo()//102;
+
+/*
+3.闭包
+*/
+function food(){
+	var food='apple';
+	var obj={
+		eatFood:function(){
+			if(food!=''){
+				console.info('i am eating '+food)
+				food='';
+			}else{
+				console.info('this is no food');
+			}
+		},setFood:function(foods){
+			food=foods;
+		}
+	}
+	return obj;
+}
+
+var food= food();
+food.eatFood();
+food.eatFood();
+food.setFood('banner');
+food.eatFood();
+
+/*
+1.立即执行函数
+*/
+function runJvascript(){
+	var arr=[];
+
+	for(var i= 0;i<10;i++){
+		// 立即执行函数  立即执行函数也有自己的作用域
+		(function(j){
+			arr[j]=function(){
+				console.info(j);
+			}
+		}(i))
+
+	}
+	return arr;
+}
+
+var myArr=runJvascript();
+for(var j=0;j<10;j++){
+	myArr[j]();
+}
+// function a(){
+// 	console.info('函数声明')
+// }() 会报错误
+//只有表达式才能被执行,但是使用后会失去函数索引
+var demo=function(){
+	console.info('立马执行函数,执行完后会失去索引值')
+}()
+//函数声明
+// function a(){
+// 	console.info('函数声明')
+// }() 会报错误
+
++function a(){
+	console.info('运行符添加函数声明')
+}()
+
+/**/
+function test(){
+	var liCollection=document.getElementsByTagName('li');
+	for(var i=0;i<liCollection.length;i++){
+		// liCollection[i].addEventListener('click',function(event){
+		// 	console.info(this)
+		// })
+		(function(j){
+			liCollection[j].onclick=function(){
+					console.info(j)
+
+			}
+		}(i))
+	}
+}
+test()
+
+function returnBytes(tag){
+	var count,len;
+	count=len=tag.length;
+	for(var i=0;i<len;i++){
+		if(tag.charCodeAt(i)>255){
+			count+=2;
+		}
+	}
+		console.info(count)
+}
+
+var f=(
+	function f(){
+		return '1';
+	},
+	function g(){
+		return 2;
+	}
+	)();
+	console.info(typeof f)
+
+	var x=1;
+	if(function f(){}){
+		x+=typeof f;
+
+	}
+	console.info(x)
