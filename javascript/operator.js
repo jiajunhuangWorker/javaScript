@@ -197,8 +197,8 @@ var num = parseInt(false);
 console.info("parseInt(false)",num);
 var num = parseInt(undefined);
 console.info("parseInt(undefined)", num);
-var num =  parseInt(20,2)
-console.info(" parseInt(20,2)");
+var num =  parseInt(101010,2)
+console.info(" parseInt(101010,2)");
 console.info(num)
 var num =  parseInt(20,8)
 console.info(" parseInt(20,8)");
