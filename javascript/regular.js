@@ -72,7 +72,7 @@ unicode
  按照层去划分
  unicode编码和汉字去进行匹配
 */
-console.info(\u8001);
+// console.info(\u8001);
 // console.info(\u100000-\U10ffff);
 
 /*
@@ -80,3 +80,66 @@ console.info(\u8001);
 [\d/D]
 .[^|r|n]
 */
+
+/*
+量词
+n+  +代表{1,正无穷}  贪婪匹配原则
+n* *{0,正无穷}	懒惰匹配原则
+n? {0,1};
+n{x} {x}
+n{x,y} {x,y}
+n$以什么结尾
+^n以什么为开头
+*/
+var reg4 = /\w*/g;
+console.info('str3:123dasd323sfsd555')
+console.info(str3.match(/\w*/g));
+console.info(str3.match(/\w+/g));
+console.info(str3.match(/\w?/g));
+console.info(str3.match(/\w{3}/g));
+console.info(str3.match(/\w{3,5}/g));
+console.info(str3.match(/\w{3,}/g));
+console.info(str3.match(/\w{3,5}/g));
+console.info(str3.match(/\w{3,5}/g));
+
+/*字符串首尾有数字
+
+*/
+var numReg =/^\d|\d$/;
+var numReg =/^\d[\s\S]$/;
+
+/*
+reg.source
+*/
+
+/*
+方法
+test()  reg.test(str)
+exec()  reg.exec(str)  和游标关系
+match() str.match(reg)
+*/
+
+var str = 'abababab';
+var reg = /ab/g;//加了g
+var reg2 = /ab/;//不加了g
+console.info(reg.exec(str));
+console.info(reg.exec(str));
+reg.lastIndex = 0;//手动控制lastIndex
+console.info(reg.exec(str));
+console.info(reg.exec(str));
+
+
+console.info(reg.exec(str));
+console.info(reg.exec(str));
+
+// 							正则不加g
+console.info(reg2.exec(str));
+console.info(reg2.exec(str));
+console.info(reg2.exec(str));
+console.info(reg2.exec(str));
+
+
+/*
+子表达式
+*/
+var eg= /(a)\1/g
