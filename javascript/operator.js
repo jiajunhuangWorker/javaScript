@@ -2,7 +2,7 @@ var a=1;
 /*
 先打印后++
 */
-document.write(a ++)
+document.write('<br/>',a ++)
 document.write(a);
 
 var b=1
@@ -29,7 +29,7 @@ document.write('<br/>Infinity == Infinity:',Infinity == Infinity);
 document.write('<br/>NaN == NaN:',NaN == NaN);
 
 /*逻辑运算符
-&&运算符先看前面的表达式转换为布尔值时否为真如果为真就看第二个表达式转换为布尔值的结果,如果只有两个
+&&运算符先看前面的表达式转换为布尔值是否为真如果为真就看第二个表达式转换为布尔值的结果,如果只有两个
 表达式的化,只看第二个表达式,就返回该表达式的值
 
 undefined,null,NaN,"",0,false 转换为布尔值都为false
@@ -50,7 +50,7 @@ document.write('<br/>0||false||1:',0||false||1);
 /*
 ！
 */
-document.write('<br/>123',!123)
+document.write('<br/>123:',!123)
 document.write('<br/>')
 /*
 条件语句

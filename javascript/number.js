@@ -15,7 +15,7 @@ console.info('typeof function (){}:',typeof function (){});
 */
 var num = Number('123')
 console.info("Number('123')", '类型:',typeof num,' : ',num);
-var num = Number('undefined')
+var num = Number(undefined)
 console.info("Number(undefined)", '类型:',typeof num,' : ',num);
 var num = Number(true)
 console.info("Number(true)", '类型:',typeof num,' : ',num);
@@ -25,6 +25,8 @@ var num = Number('a')
 console.info("Number('a')", '类型:',typeof num,' : ',num);
 var num = Number('NaN')
 console.info("Number('NaN')", '类型:',typeof num,' : ',num);
+var num = Number(null)
+console.info("Number(null)", '类型:',typeof num,' : ',num);
 	console.info('--------parseInt---------')
 var num = parseInt('a');
 console.info("parseInt('a')", '类型:',typeof num,' : ',num);
@@ -53,10 +55,10 @@ console.info('parseFloat(20.3232.23dsda),类型:',typeof num,' : ',num)
 var num =  String('undefined')
 console.info('String(undefined),类型:',typeof num,' : ',num)
 	console.info('--------Boolean---------')
-var num =  Boolean("123")
-console.info('Boolean("123"),类型:',typeof num,' : ',num)
-var num =  Boolean("0123")
-console.info('Boolean("0123"),类型:',typeof num,' : ',num)
+var num =  Boolean(123)
+console.info('Boolean(123),类型:',typeof num,' : ',num)
+var num =  Boolean(0123)
+console.info('Boolean(0123),类型:',typeof num,' : ',num)
 var num =  Boolean(-1)
 console.info('Boolean(-1),类型:',typeof num,' : ',num)
 var num =  Boolean(undefined)
@@ -130,7 +132,7 @@ num = null==undefined
 console.info('null==undefined,类型:',typeof num,' : ',num)
 num = 1==="1"
 console.info('1==="1",类型:',typeof num,' : ',num)
-num = 1==="1"
+num = 1!=="1"
 console.info('1!=="1",类型:',typeof num,' : ',num)
 
 
@@ -159,3 +161,4 @@ console.log("'1'===1",'1'===1);//false
 console.log("parseInt('123abc')",parseInt('123abc'));//123
 var num=123123.345789;
 console.log(num+"toFixed(3)",num.toFixed(3));//123123.345
+console.log(typeof typeof z)

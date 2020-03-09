@@ -2,7 +2,7 @@
 //预编译
 //单线程和解析性语言(翻译一句执行一句)
 /*
-语法分析(通便扫描)
+语法分析(通篇扫描)
 预编译(window上去将所有的window去挂在到)
 解析性语言(翻译一句执行一句)
 */
@@ -28,15 +28,15 @@ a =10;未经声明就直接赋值window所有 (window 就是全局的域)
 window
 **/
 console.info(window.a == a)
-var a= b = 123;
+var a = b = 123;
 console.info('a',a,'b',b)
 
-function test(){
+function test1(){
 	var c= d = 123;
-	console.info('c',window.c)
-	console.info('c',window.d)
+	console.info('c:',window.c)
+	console.info('d:',window.d)
 }
-test();
+test1();
 function test2(){
 	var e=123;
 }
@@ -77,7 +77,6 @@ function fn(a){
 	console.info(a);
 	function a(){}
 	console.info(a)
-	function b(){}
 	console.info(b)
 	function b(){}
 }
@@ -89,8 +88,8 @@ function fn2(a,b){
 	c=0;
 	var c;
 	a=3;
-	b=2;
-	console.log(b)//function b;
+	var b=2;
+	console.log(b)//2;
 	function b(){}
 	function d(){}
 	console.info(b)//2
@@ -145,21 +144,21 @@ var test =123;
 /*
 global
 */
-global=100;
+// global=100;.
 function fn4(){
-	console.info(global)//undefined;
-	global=200;
-	console.info(global)//200;
-	var global=300;
+	console.info(global4)//undefined;
+	global4=200;
+	console.info(global4)//200;
+	var global4=300;
 }
 fn4();
 var global;
 
 
 function fn5(){
-	console.log(b)//undefined;
+	console.log(bbb)//undefined;
 	if(a){
-		var b=100;
+		var bbb=100;
 	}
 	c=234;
 	console.info(c)//234;
