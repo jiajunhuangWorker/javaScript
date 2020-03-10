@@ -141,5 +141,62 @@ console.info(reg2.exec(str));
 
 /*
 子表达式
+匹配第一个表达式内容
 */
-var eg= /(a)\1/g
+var str = '223aaaabbbbccccdddd';
+var reg = /(\w)\1(\w)\2/g;
+console.info(str.match(reg))
+/*
+找下标
+存在返回!-1
+
+*/
+console.info(str.search(reg));
+/*
+replace
+替换
+*/
+console.info(str.replace(/\d/g,'cc'))
+var str = 'aabb';
+console.info(str.replace(/(\w)\1(\w)\2/g,'$2$2$1$1'))
+
+console.info(str.replace(/(\w)\1(\w)\2/g,function($,$1,$2){
+	console.info($)
+	console.info($1)
+	console.info($2)
+}))
+
+var str = 'the-first-name';
+var reg = /-(\w)/g;
+console.info(str.replace(reg,function($,$1){
+	console.info($)
+	console.info($1)
+return $1.toUpperCase();
+}))
+
+/*
+正向预查
+正向断言
+*/
+var str = 'abaaaa';
+var reg = /a(?=b)/g;
+var reg1 = /a(?!b)/g;
+console.info(str.match(reg));
+console.info(str.match(reg1));
+
+
+var str = "aaaaa";
+var reg = /a?/g;
+var reg1 = /a*/g;
+console.info(str.match(reg))//贪婪;
+console.info(str.match(reg1))//非贪婪;
+
+
+/*
+
+1000000000
+1.000.000.000
+*/
+var str = "1000000000";
+var reg = /(?=(\B)(\d{3})+$)/g;
+console.info(str.replace(reg,"."));
