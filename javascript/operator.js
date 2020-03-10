@@ -2,31 +2,31 @@ var a=1;
 /*
 先打印后++
 */
-document.write('<br/>',a ++)
-document.write(a);
+console.info('<br/>',a++)
+console.info(a);
 
 var b=1
 var c=b++ +1
-document.write('<br/>c:',c);
-document.write('<br/>b:',b);
+console.info('<br/>c:',c);
+console.info('<br/>b:',b);
 
-document.write('<br/>0%5:',0%5)
+console.info('<br/>0%5:',0%5)
 
-document.write('<br/>---js比较运算符---')
+console.info('<br/>---js比较运算符---')
 
 
 var a=123,b=877;
 a=a+b;
 b=a-b;
 a=a-b;
-document.write('<br/>a',a);
-document.write('<br/>b',b);
+console.info('<br/>a',a);
+console.info('<br/>b',b);
 
 
 /*ascll码比较*/
-document.write('<br/>10>8:','10'>'8',' //两个字符串比较先查找到1然后1和8进行比较');
-document.write('<br/>Infinity == Infinity:',Infinity == Infinity);
-document.write('<br/>NaN == NaN:',NaN == NaN);
+console.info('<br/>10>8:','10'>'8',' //两个字符串比较先查找到1然后1和8进行比较');
+console.info('<br/>Infinity == Infinity:',Infinity == Infinity);
+console.info('<br/>NaN == NaN:',NaN == NaN);
 
 /*逻辑运算符
 &&运算符先看前面的表达式转换为布尔值是否为真如果为真就看第二个表达式转换为布尔值的结果,如果只有两个
@@ -37,35 +37,35 @@ undefined,null,NaN,"",0,false 转换为布尔值都为false
 /*
 &&
 */
-document.write('<br/>1 && 3+2:',(1 && 3+2));
-document.write('<br/>0 && 3+2:',(0 && 3+2));
-document.write('<br/>1 && undefined:',(1 && undefined));
-document.write('<br/>0 && document.write("a"):',0 && document.write("a"));
+console.info('<br/>1 && 3+2:',(1 && 3+2));
+console.info('<br/>0 && 3+2:',(0 && 3+2));
+console.info('<br/>1 && undefined:',(1 && undefined));
+console.info('<br/>0 && console.info("a"):',0 && console.info("a"));
 /*
 ||
 兼容的时候使用
  var e=e||window.event
 */
-document.write('<br/>0||false||1:',0||false||1);
+console.info('<br/>0||false||1:',0||false||1);
 /*
 ！
 */
-document.write('<br/>123:',!123)
-document.write('<br/>')
+console.info('<br/>123:',!123)
+console.info('<br/>')
 /*
 条件语句
 */
 var score = parseInt(window.prompt('textarea'));
 if(score>90 && score<=100){
-	document.write('alibaba');
+	console.info('alibaba');
 }else if(score>80 && score<=90){
-	document.write('tencent');
+	console.info('tencent');
 }else if(score>70 && score<=80){
-	document.write('baidu');
+	console.info('baidu');
 }else if(score>60 && score<=70){
-	document.write('mogujie');
+	console.info('mogujie');
 }else{
-	document.write('no,no,no');
+	console.info('no,no,no');
 }
 
 /*
@@ -73,7 +73,7 @@ if(score>90 && score<=100){
 */
 var i=1;
 for(;i;){
-	document.write('<br/>i:'+i);
+	console.info('<br/>i:'+i);
 	i++;
 	if(i>10){
 		i=0;
@@ -81,7 +81,7 @@ for(;i;){
 }
 for (var i = 0; i <= 100; i++) {
 	if(i%3==0 && i%5==0 || i%7==0){
-		document.write('<br/>i能被3&&5||7整除:',i)
+		console.info('<br/>i能被3&&5||7整除:',i)
 	}
 }
 /*
@@ -101,9 +101,9 @@ if(score!=0){
 	for(var i=0;i<score;i++){
 		num*=2;
 	}
-	document.write('<br/>2的'+score+'次幂是:',num);
+	console.info('<br/>2的'+score+'次幂是:',num);
 }else{
-	document.write('<br/>2的0次幂是:1');
+	console.info('<br/>2的0次幂是:1');
 }
 
 /*
@@ -115,7 +115,7 @@ for(var i=score2;i>0;i--){
 	str+=i>1?i+'*':i;
 	result*=i;
 }
-document.write('<br/>'+str+':'+result);
+console.info('<br/>'+str+':'+result);
 
 /*3.斐波那
 斐波那契数列（意大利语：Successione di Fibonacci），又译为菲波拿契数列、菲波那西数列、斐氏数列、黄金分割数列。
@@ -137,7 +137,7 @@ var result='';
 for(i=score4.length;0<i;i--){
 	result+=score4[i-1];
 }
-document.write('<br/>'+score4+'反转之后:'+result);
+console.info('<br/>'+score4+'反转之后:'+result);
 /*
 5.a,b,c三个数字比较
 */
@@ -152,7 +152,7 @@ for(var i=score6;1<i;i--){
 		str+=i+'-';
 	}
 }
-document.write('<br/>'+score6+'的质数有:'+str+'7-5-3-2');
+console.info('<br/>'+score6+'的质数有:'+str+'7-5-3-2');
 
 
 

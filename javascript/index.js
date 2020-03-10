@@ -1,9 +1,9 @@
 //编译过程
 //预编译
-//单线程和解析性语言(翻译一句执行一句)
+//javascript是单线程和解析性语言(翻译一句执行一句)
 /*
 语法分析(通篇扫描)
-预编译(window上去将所有的window去挂在到)
+预编译(将属性和属性方法挂载到window)
 解析性语言(翻译一句执行一句)
 */
 // 预编译
@@ -11,15 +11,17 @@
 	函数声明整体提升到 window中
 	变量 声明提升
 */
-console.info(a);
-function a(a){
+console.info(aFun);
+console.info(aFun(undefined));
+function aFun(a){
 	var a=123;
 	var a=function(){
 		console.info(1)
 	}
 	a();
 }
-var a=123;
+var aFun=123;
+
 /**
 暗示全局变量
 imply global
@@ -60,16 +62,12 @@ AO{
 AO{
 	a:1,
 	b:function b(){},
-	d:function d(){}
 }
 在函数体里找函数声明,值赋予函数体
 AO{
-	a:function a(){},
+	a:function a(){} ->123,
 	b:function b(){},
-	d:function d(){}
 }
-
-
 */
 function fn(a){
 	console.log(a)
@@ -82,30 +80,58 @@ function fn(a){
 }
 fn(1)
 
+/*
+预编译过程
 
+四部曲
+创建AO对象 Activation Object（执行其上下文）
+AO{
+
+}
+找到形参和变量声明,将变量和形参作为AO属性名,值为undefined
+AO{
+	a:undefined,
+	b:undefined,
+	d:undefined,
+	c:undefined
+}
+将实参值和形参统一
+AO{
+	a:1,
+	b:function b(){},
+	d:function d(){},
+	c:undefined
+}
+在函数体里找函数声明,值赋予函数体
+AO{
+	a:function a(){} ->123,
+	b:function b(){},
+	d:function d(){}
+}
+*/
 function fn2(a,b){
-	console.info(a)//1;
+	console.info(a)//1 -> fun;
+	console.info(c)//undefined
 	c=0;
 	var c;
 	a=3;
 	var b=2;
-	console.log(b)//2;
+	console.log(d)//fun;
 	function b(){}
 	function d(){}
+	function a(){}
 	console.info(b)//2
 }
 fn2(1)
 
 function fn3(a,b){
-	console.info(a)//function;
+	console.info(a)//1;
 	console.info(b)//undefined;
 	var b=234;
 	console.info(b)//234;
 	a=123;
 	console.info(a)//123;
-	function a(){
 
-	}
 	var a;
 	b=234;
 	var b=function (){};
@@ -123,8 +149,8 @@ Go{
 }
 window === Go
 */
-var a=123;
-function a (){}
+var a2=123;
+function a2(){}
 
 
 

@@ -4,7 +4,7 @@
 var a;
 a=100;
 
-// document.write(a);
+// console.info(a);
 /*
 单一声明模式
 */
@@ -29,7 +29,7 @@ number,boolean,string,undefined,null(覆盖使用)
 var a=10;
 var b=a;
 a=20;
-document.write('	原始值: ',b)
+console.info('	原始值: ',b)
 
 
 /*
@@ -48,12 +48,12 @@ array,object,function
 var arr=[1];
 var arr1=arr;
 arr.push(2);
-document.write('	引用值: ',arr);
+console.info('	引用值: ',arr);
 
 var  arr=[1,2];
 var arr1=arr;
 arr=[1,3];
-document.write('	arr1:',arr1);
+console.info('	arr1:',arr1);
 
 /*
 js错误分为两种
@@ -62,9 +62,9 @@ js错误分为两种
 2.逻辑错误(标准错误,情有可原)
 */
 var a=10;
-document.write(a);
+console.info(a);
 var b=20;
-document.write(b);
+console.info(b);
 
 /*
 js运算操作符
@@ -83,29 +83,35 @@ infinity(正无穷)
 var dobulePlusElementA=10;
 var dobulePlusElementB=20;
 dobulePlusElementA=++dobulePlusElementA;
-document.write(dobulePlusElementA);
+console.info(dobulePlusElementA);
 
-var dobulePlusElementA=10;
-var dobulePlusElementC=++dobulePlusElementA - 1 + dobulePlusElementA++;
-document.write('	---'+dobulePlusElementC + '	' + dobulePlusElementA)
+var dobulePlusElementZ=10;
+var dobulePlusElementC=++dobulePlusElementZ - 1 + dobulePlusElementZ++;
+console.info('	---'+dobulePlusElementC + '	' + dobulePlusElementZ)
 
 var javascriptA = 10;
 javascriptA+=10+1;
-document.write('&nbsp;&nbsp;javascriptA: ',javascriptA);
+console.info('&nbsp;&nbsp;javascriptA: ',javascriptA);
 
 var a = (10 * 3 - 4 / 2 + 1) % 2;//1
-	document.write('<br/>');
-	document.write('a++:',a);// 2
+	console.info('<br/>');
+	console.info('a++:',a);// 2
 	b=3;
 	b %= a + 3;	//3
-	document.write('<br/>');
-	document.write('++a',++a);
-	document.write('<br/>');
-	document.write('a++:',a++);// 2
-	document.write('<br/>');
-	document.write('--b:',--b);//2
+	console.info('<br/>');
+	console.info('++a',++a);
+	console.info('<br/>');
+	console.info('a++:',a++);// 2
+	console.info('<br/>');
+	console.info('--b:',--b);//2
 	var a= 123,b=234,c=null;
 	c=a;
 	a=b;
 	b=c;
 	console.info(a,b);
+
+	var a = 123, b = 234;
+	a = b+a;
+	b = a-b;
+	a = a-b;
+	console.info(a,b)
