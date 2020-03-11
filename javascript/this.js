@@ -35,7 +35,6 @@ function 变成表达式将忽略引用 转换为表达式 true
 */
 if(function f(){}){
 	x += typeof f;//f() 找不到了所以变成undefined
-
 }
 console.info(x);//1undefined
 console.info(undefined == null)//true

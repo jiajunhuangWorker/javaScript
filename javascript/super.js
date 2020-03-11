@@ -50,42 +50,54 @@ function Father(){
 function Son(){
 
 }
-// function inherit(Target,Origin){
-// 	Target.prototype = Origin.prototype;
-// };
-// inherit(Son,Father);
-// var son = new Son();
-// console.info(son)
+function inherits(Target,Origin){
+	Target.prototype = Origin.prototype;
+};
+inherits(Son,Father);
+var son = new Son();
+console.info(son)
 // /*问题*/
-// Son.prototype.name2 = 'HAHA';
-// var ft = new Father();
-// console.info(ft)
+Son.prototype.name2 = 'HAHA';
+var ft = new Father();
+console.info(ft)
 
 /*
 圣杯模式
 */
+function Father2(){
 
-// function inherit2(Target,Origin){
-// 	function F(){
+}
+function Son2(){
 
-// 	}
-// 	F.prototype = Origin.prototype;
-// 	Target.prototype =  new F();
-// 	Target.prototype.constuctor = Target;
-// 	Target.prototype.uber = Origin.prototype;
-// }
-// inherit2(Son,Father);
-// var son2 = new Son();
-// console.info(son2)
+}
+function inherit2(Target,Origin){
+	function F(){
+
+	}
+	F.prototype = Origin.prototype;
+	Target.prototype =  new F();
+	Target.prototype.constuctor = Target;
+	Target.prototype.uber = Origin.prototype;
+}
+inherit2(Son2,Father2);
+var son2 = new Son2();
+console.info(son2)
 // /*问题*/
-// Son.prototype.name2 = 'HAHA';
-// var ft2 = new Father();
-// console.info(ft2)
+Son2.prototype.name2 = 'H2321312';
+
+var ft2 = new Father2();
+console.info(ft2)
 
 /*
 YH
 F私有化
 */
+function Father3(){
+
+}
+function Son3(){
+
+}
 var inherit = (function (){
 	var F = function(){};
 	return function (Target,Origin){
@@ -96,13 +108,13 @@ var inherit = (function (){
 	}
 }())
 
-inherit(Son,Father);
-var son2 = new Son();
-console.info(son2)
+inherit(Son3,Father3);
+var son3 = new Son3();
+console.info(son3)
 /*问题*/
-Son.prototype.name2 = 'HAHA';
-var ft2 = new Father();
-console.info(ft2)
+Son3.prototype.name = 'HAdasda dasdasdasHA';
+var ft3 = new Father3();
+console.info(ft3)
 /*
 	闭包私有化
 */

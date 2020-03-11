@@ -85,8 +85,6 @@ num = isNaN(1)
 console.info('isNaN(1),类型:',typeof num,' : ',num)
 num = isNaN("1")
 console.info('isNaN("1"),类型:',typeof num,' : ',num)
-num = isNaN("abc")
-console.info('isNaN("abc"),类型:',typeof num,' : ',num)
 num = isNaN("abc")//Number(abc) ->NaN
 console.info('isNaN("abc"),类型:',typeof num,' : ',num)
 num = isNaN(null) //Number(null) ->0

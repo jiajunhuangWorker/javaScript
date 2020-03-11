@@ -18,7 +18,9 @@ function retuanByteL(str){
 
 /*
 原型
-	1.定义:原型是function对象的一个属性,它定义了构造函数制造出的对象的公告祖先.通过该构造函数产生的对象,可以继承该原型的属性和方法.
+	1.定义:原型是function对象的一个属性,它定义了构造函数制造出的对象的公告祖先.
+	通过该构造函数产生的对象,可以继承该原型的属性和方法.
+	
 	原型也是对象
 	2.利用原型特定点和概念,可以提取共有属性
 	3.对象如何查看原型 -> 隐式属性__proto__
@@ -270,7 +272,7 @@ function People2(name,age,sex){
 }
 function Student2(name,age,sex,tel,grade){
 	// var this = {name,age,sex}
-	People.call(this,[name,age,sex]);
+	People.apply(this,[name,age,sex]);
 	this.tel = tel;
 	this.grade = grade;
 }
