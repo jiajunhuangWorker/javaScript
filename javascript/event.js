@@ -258,7 +258,7 @@ keypress
 	charCode 是有值
 
 假设双键 例如shift+a
-	keydown
+	假设监听keydown就能获取到双键
 */
 
 

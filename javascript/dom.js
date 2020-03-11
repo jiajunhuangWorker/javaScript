@@ -1,6 +1,8 @@
 /*
 1.dom -> document object model
-2.dom 定义了表示和修改文档所需要的方法.dom对象即宿主对象,由浏览器厂商定义,用来操作html和xml功能的一类对象的集合.也有人称dom是对html一级xml的标准编程接口
+2.dom 定义了表示和修改文档所需要的方法.dom对象即宿主对象,
+由浏览器厂商定义,用来操作html和xml功能的一类对象的集合.
+也有人称dom是对html一级xml的标准编程接口
 */
 /*题目1*/
 // var div = document.getElementsByTagName('div')[0];
@@ -74,7 +76,7 @@ ul.onmouseover = function(e){
 /*
 1.对节点的增删查改
 查看
-document代表真个文档
+document代表文档
 document.getElementById()
 元素id在ie8以下的浏览器,不区分id大小写,而且也返回匹配name属性的元素
 定义在Document.prototype上,即Element节点上不能使用
@@ -88,7 +90,7 @@ document.getElementsByName()
 方法定义在Document.prototype和Element.prototype上
 
 document.getElementsByClassName()
-类名->ie9一下的ie版本没有可以多个class一起
+类名->ie9以下的ie版本没有可以多个class一起
 
 document.querySelector()
 css选择器 在ie8以下的版本中没有,实时性问题(照片原理)

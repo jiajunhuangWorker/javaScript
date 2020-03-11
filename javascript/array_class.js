@@ -186,6 +186,7 @@ oPerson1.say();//1
 */
 (function(x){
 	delete x;
+	console.info(x)
 	return x;
 }(1))//1
 

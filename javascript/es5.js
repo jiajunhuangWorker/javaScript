@@ -59,8 +59,7 @@ var obj = {
 	,name:'222'
 }
 var name = 'window'
-function test2(name,name){
-
+function test2(name){
 	var name = 'scope';
 	console.log(this)
 	with(obj){

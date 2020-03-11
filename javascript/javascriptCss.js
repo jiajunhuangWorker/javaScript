@@ -16,8 +16,7 @@ var div = document.getElementsByTagName('div')[0];
 console.info(div.style)
 
 /*
-window.getComputedStyle第二个 参数为什么是null
-选择伪造元素
+window.getComputedStyle第二个 参数选择伪造元素
 */
 console.info(window.getComputedStyle(div,'before').width)
 console.info(window.getComputedStyle(div,null));

@@ -167,7 +167,7 @@ console.info(arrC.slice(1,2));
 /*
 join 只能传字符串
 */
-console.info(arrC.join('-'))
+console.info(arrC.join('!'))
 
 /*
 split(从该位开始截取,截取到该位)
