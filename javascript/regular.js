@@ -197,6 +197,6 @@ console.info(str.match(reg1))//非贪婪;
 1000000000
 1.000.000.000
 */
-var str = "1000000000";
+var str = "￥100000203004";
 var reg = /(?=(\B)(\d{3})+$)/g;
 console.info(str.replace(reg,"."));
