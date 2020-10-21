@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		table{
+			border:1px solid #ccc;
+		}
+		table td,table th{
+			border-bottom:1px solid #ccc;
+		}
+		table tr:last-child td{
+			border-bottom:0;
+		}
+		table th,table td{
+			border-right:1px solid #ccc;
+		}
+	</style>
+</head>
+<body>
+	<table id="table" cellspacing="0" cellpadding="0">
+		<thead>
+		<tr>
+			<th>园区1</th>
+			<th>南部医区2</th>
+			<th>南部医区2</th>
+			<th>北部医区1</th>
+			<th>南部医区2</th>
+			<th>南部医区2</th>
+			<th>南部医区2</th>
+			<th>北部医区1</th>
+			<th>北部医区1</th>
+		</tr>
+		</thead>
+		<tbody>
+		<tr>
+			<td>内科</td>
+			<td>21</td>
+			<td>4</td>
+			<td>1</td>
+			<td>1</td>
+			<td>6</td>
+			<td>7</td>
+			<td>8</td>
+			<td>9</td>
+		</tr>
+		<tr>
+			<td>内科</td>
+			<td>221</td>
+			<td>3</td>
+			<td>1</td>
+			<td>1</td>
+			<td>62</td>
+			<td>7</td>
+			<td>8</td>
+			<td>9</td>
+		</tr>
+		<tr>
+			<td>外科</td>
+			<td>214</td>
+			<td>3</td>
+			<td>1</td>
+			<td>1</td>
+			<td>62</td>
+			<td>7</td>
+			<td>81</td>
+			<td>93</td>
+		</tr>
+		<tr>
+			<td>内科</td>
+			<td>21</td>
+			<td>3</td>
+			<td>21</td>
+			<td>1</td>
+			<td>62</td>
+			<td>73</td>
+			<td>81</td>
+			<td>92</td>
+		</tr>
+		<tr>
+			<td>内科</td>
+			<td>21</td>
+			<td>3</td>
+			<td>21</td>
+			<td>2</td>
+			<td>62</td>
+			<td>73</td>
+			<td>81</td>
+			<td>92</td>
+		</tr>
+		<tr>
+			<td>内科</td>
+			<td>21</td>
+			<td>3</td>
+			<td>21</td>
+			<td>1</td>
+			<td>62</td>
+			<td>73</td>
+			<td>81</td>
+			<td>92</td>
+		</tr>
+		<tr>
+			<td>外科</td>
+			<td>214</td>
+			<td>3</td>
+			<td>1</td>
+			<td>1</td>
+			<td>62</td>
+			<td>7</td>
+			<td>81</td>
+			<td>93</td>
+		</tr>
+		<tr>
+			<td>外科</td>
+			<td>2124</td>
+			<td>3</td>
+			<td>1</td>
+			<td>12</td>
+			<td>62</td>
+			<td>7</td>
+			<td>81</td>
+			<td>93</td>
+		</tr>
+		<tr>
+			<td>外科</td>
+			<td>212</td>
+			<td>3</td>
+			<td>1</td>
+			<td>1</td>
+			<td>62</td>
+			<td>73</td>
+			<td>81</td>
+			<td>92</td>
+		</tr>
+		</tbody>
+	</table>
+</body>
+</html>
+<script type="text/javascript" src="jquery.min.1.7.js"></script>
+<script type="text/javascript">
+	function colspanTHead(id){
+		var thStructure=[],thNum = 1,tbodyList = [],showBodyList=[],mergeList = arguments[1]||0;
+		for(var i = 0; i < $('#'+id).find('th').length;	i++){
+			if(i != $('#'+id).find('th').length - 1){
+				if($('#'+id).find('th').eq(i).html() != $('#'+id).find('th').eq(i+1).html()){
+					if(thNum!=1){
+						thStructure.push('<th colspan="'+thNum+'">'+$('#'+id).find('th').eq(i).html()+'</th>')
+					}else{
+						thStructure.push('<th>'+$('#'+id).find('th').eq(i).html()+'</th>')
+					}
+					thNum = 1;
+				}else{
+					thNum+=1;
+				}
+			}else{
+				if($('#'+id).find('th').eq(i).html() != $('#'+id).find('th').eq(i-1).html()){
+					thNum = 1;
+				}
+				if(thNum!=1){
+						thStructure.push('<th colspan="'+thNum+'">'+$('#'+id).find('th').eq(i).html()+'</th>')
+					}else{
+						thStructure.push('<th>'+$('#'+id).find('th').eq(i).html()+'</th>')
+				}
+			}
+		}
+		$('#'+id).find('th').remove();
+		thStructure.forEach(function(element, index) {
+			$('#'+id).find('thead').find('tr').append(element)
+		});
+		// tbody内容合并 rowspan
+		for(var i = 0; i < $('#'+id).find('tbody tr').length; i++){
+			/*初始化组装的数组*/
+			tbodyList[i] = {}
+			tbodyList[i]['elm'] = [];
+			tbodyList[i]['row'] = [];
+			for(var j = 0; j < $('#'+id).find('tbody tr').eq(i).find('td').length; j++){
+				var  html = $('#'+id).find('tbody tr').eq(i).find('td').eq(j).html();
+				tbodyList[i]['elm'].push(html);
+				tbodyList[i]['row'].push(1);
+			}
+		}
+		var arr = {elm:[],row:[]},nowArr = {elm:[],row:[]};
+		if(arguments[1] === true){
+			// 多行合并
+			for(var i = tbodyList.length; i >= 0; i--){
+				if(nowArr.elm.length != 0){
+					if(i!=0){
+						tbodyList[i] = arr;
+						showBodyList.unshift(nowArr);
+						tbodyList[i+1] = nowArr;
+					}else{
+						showBodyList.unshift(nowArr);
+						showBodyList.unshift(arr);
+					}
+				}
+				arr = {elm:[],row:[]},nowArr = {elm:[],row:[]};
+				if(typeof tbodyList[i] != 'undefined'){
+					if(i > 0){
+						for(var j=0; j < tbodyList[i].elm.length;j++){
+							if(tbodyList[i-1].elm[0] == tbodyList[i].elm[0]){
+								if(tbodyList[i-1].elm[j] == tbodyList[i].elm[j]){
+									nowArr['elm'].push(null)
+									nowArr['row'].push(1)
+									arr['elm'].push(tbodyList[i].elm[j])
+									arr['row'].push(tbodyList[i-1].row[j]+tbodyList[i].row[j])
+								}else {
+									nowArr['elm'].push(tbodyList[i].elm[j])
+									nowArr['row'].push(tbodyList[i].row[j])
+									arr['elm'].push(tbodyList[i-1].elm[j])
+									arr['row'].push(tbodyList[i-1].row[j])
+								}
+							}else{
+								nowArr['row'] = tbodyList[i].row;
+								nowArr['elm'] = tbodyList[i].elm;
+								arr['elm'] = tbodyList[i-1].elm;
+								arr['row'] = tbodyList[i-1].row;
+								break;
+							}
+						}
+					}
+				}
+			}
+		}else{
+			for(var i = tbodyList.length; i >= 0; i--){
+				if(nowArr.elm.length != 0){
+					if(i!=0){
+						tbodyList[i] = arr;
+						showBodyList.unshift(nowArr);
+						tbodyList[i+1] = nowArr;
+					}else{
+						showBodyList.unshift(nowArr);
+						showBodyList.unshift(arr);
+					}
+				}
+				arr = {elm:[],row:[]},nowArr = {elm:[],row:[]};
+				console.info(mergeList)
+				if(typeof tbodyList[i] != 'undefined'){
+					if(i > 0){
+						for(var j=0; j < tbodyList[i].elm.length;j++){
+							if(tbodyList[i-1].elm[mergeList] == tbodyList[i].elm[mergeList]){
+								if (j == mergeList) {
+									if(tbodyList[i-1].elm[j] == tbodyList[i].elm[j]){
+										nowArr['elm'].push(null);
+										nowArr['row'].push(1);
+										arr['elm'].push(tbodyList[i].elm[j]);
+										arr['row'].push(tbodyList[i-1].row[j]+tbodyList[i].row[j]);
+									}else{
+										nowArr['elm'].push(tbodyList[i].elm[j])
+										nowArr['row'].push(tbodyList[i].row[j])
+										arr['elm'].push(tbodyList[i-1].elm[j])
+										arr['row'].push(tbodyList[i-1].row[j])
+									}
+								}else{
+									nowArr['elm'].push(tbodyList[i].elm[j])
+									nowArr['row'].push(tbodyList[i].row[j])
+									arr['elm'].push(tbodyList[i-1].elm[j])
+									arr['row'].push(tbodyList[i-1].row[j])
+								}
+							}else{
+								nowArr['row'] = tbodyList[i].row;
+								nowArr['elm'] = tbodyList[i].elm;
+								arr['elm'] = tbodyList[i-1].elm;
+								arr['row'] = tbodyList[i-1].row;
+								break;
+							}
+						}
+					}
+				}
+			}
+		}
+		$('#'+id).find('tbody').empty();
+		showBodyList.forEach( function(element,item) {
+			$('#'+id).find('tbody').append('<tr></tr>');
+			for(var i = 0; i < element.elm.length; i++){
+				if(element.row[i] > 1){
+					$('#'+id).find('tbody').find('tr').eq(item).append('<td rowspan='+element.row[i]+'>'+element.elm[i]+'</td>');
+				}else{
+					if(element.elm[i]){
+						$('#'+id).find('tbody').find('tr').eq(item).append('<td>'+element.elm[i]+'</td>');
+					}
+				}
+			}
+		});
+	}
+	colspanTHead('table')
+</script>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>scroll</title>
+	<link rel="stylesheet" href="../css/index.css">
+	<style type="text/css">
+		.box{
+			width:300px;
+			height:300px;
+			padding:100px 0 0 20px;
+			margin:100px 0 0  100px;
+			border:1px solid #fff;
+			position:relative;
+		}
+		.box2{
+			width:50px;
+			height:50px;
+			/*padding:100px;*/
+			margin:100px 0 0  100px;
+			background:#fff;
+		}
+	</style>
+</head>
+	<body>
+		<dl>
+			<dt>错误处理</dt>
+			<dd>1.语法错误(Uncaught SyntaxError)  影响:会导致整个脚本块无法执行</dd>
+			<dd>2.运行报错 影响:会导致脚本快后续代码无法执行</dd>
+				<dd>2.1 运行错误 </dd>
+				<dd>2.2 运行结果 (运行结果不符合预期)</dd>
+			
+			<dt>调试错误</dt>
+				<dd>断点调试(F10 把当前行执行完) (F11 进入函数执行)</dd>
+				<dd>控制台打印</dd>
+			<dt>抛出错误</dt>
+			<dd>错误在js中本质上是一个对象,抛出错误的语法为:</dd>
+			<dd>throw 错误对象 错误对象的构造函数为error</dd>
+			<dd>throw new Error()</dd>
+			<dd>错误堆栈</dd>
+			
+			<dd>ReferenceError 语法错误 :引用错误(无效引用) 没声明某个变量</dd>
+
+			<dd>TypeError 类型错误 </dd>
+
+			<dt>捕获错误</dt>
+			<dd>假设网络断网用户无法避免</dd>
+			<dd>try{代码1}catch(错误对象){代码2} finally{代码3}</dd>
+			<dd>当运行代码1的时候,如果发生错误,立即停止代码1执行,转而执行代码2,错误对象未抛出的错误对象,无论代码1和代码2是否执行 代码3都执行</dd>
+
+		</dl>
+	</body>
+</html>
+
+<script src="../javascript/error.js"></script>

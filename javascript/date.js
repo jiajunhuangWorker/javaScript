@@ -17,18 +17,18 @@ console.info('时间的set方法和判断现在时间点去进行比较');
 var firstTime = new Date().getTime();
 var times = setInterval(function(){
 	var lastTime = new Date().getTime();
-	console.info('setInterval误差:',lastTime - firstTime);
+	// console.info('setInterval误差:',lastTime - firstTime);
 	firstTime = lastTime;
 	clearInterval(times)
 },1000);
 
 var time1 = setInterval(function(){
 	var lastTime = new Date().getTime();
-	console.info('setInterval误差:',lastTime - firstTime);
+	// console.info('setInterval误差:',lastTime - firstTime);
 	firstTime = lastTime;
 	clearInterval(time1)
 },1000);
-console.info('time1:',time1,'time:',time);
+// console.info('time1:',time1,'time:',time);
 
 var t = setTimeout(function(){
 	console.info('a')
@@ -57,3 +57,88 @@ var time=setInterval(function(){
 	s< 10 ? ser.value = '0'+s : ser.value = s;
 
 },1000)
+
+/*
+date
+*/
+console.info(Date());
+console.info(new Date(1000));
+
+/*
+实例成员
+*/
+console.info('new Date().getDate()',new Date().getDate());
+console.info('new Date().getUTCDate()',new Date().getUTCDate());
+console.info('new Date().getDay()',new Date().getDay());
+console.info('new Date().getFullYear()',new Date().getFullYear());
+console.info('new Date().getHours()',new Date().getHours());
+console.info('new Date().getMinutes()',new Date().getMinutes());
+console.info('new Date().getSeconds()',new Date().getSeconds());
+console.info('new Date().getMilliseconds()',new Date().getMilliseconds());
+console.info('new Date().getUTCDate()',new Date().getUTCDate());
+console.info('new Date().getUTCDate()',new Date().getUTCDate());
+
+
+/*
+turn date Object
+*/
+function getDateString(date){
+	var year = date.getFullYear().toString().padStart(4,"0"),
+		month = (date.getMonth()+1).toString().padStart(2,"0"),
+		day = date.getDate().toString().padStart(2,"0"),
+		hour = date.getHours().toString().padStart(2,"0"),
+		min = date.getMinutes().toString().padStart(2,"0"),
+		second = date.getSeconds().toString().padStart(2,"0");
+		return `${year}-${month}-${day} ${hour}:${min}:${second}`;
+}
+console.info(getDateString(new Date()))
+
+/*
+homework
+1.编写一个函数 返回一个友好的日期字符串格式
+2.给定用户的生日 计算该用户的年龄
+3.根据系统当前的月份 输出这一个月每一天的星期六
+*/
+var times ={
+	getFulTime(date){
+		var year = date.getFullYear().toString().padStart(4,"0");
+		 month = (date.getMonth()+1).toString().padStart(2,'0'),
+		 day = date.getDate().toString().padStart(2,'0'),
+		 hour = date.getHours().toString().padStart(2,'0'),
+		 min = date.getMinutes().toString().padStart(2,'0'),
+		 second = date.getSeconds().toString().padStart(2,'0');
+		 return `${year}-${month}-${day} ${hour}:${min}:${second}`;
+	},
+	getOld(time){
+		var tt = time+'',result = null;
+		var nowTime = new Date().valueOf(),brithday = new Date(document.getElementById('brithdayTime').value).valueOf();
+		result = nowTime - brithday;
+		if (result > 0) {
+			console.info(new Date(result).getFullYear() - 1970)
+			return new Date(result).getFullYear() - 1970
+		}
+	},
+	getSturday(){
+		var date = new Date(),
+		year = date.getFullYear(),
+		month = date.getMonth(),
+		getdateL = new Date(year,month+1,0).getDate(),
+		arr = [];
+		for (var i = 1; i <= getdateL; i++) {
+			if(new Date(date.setFullYear(year,month,i)).getDay() == 6){
+				arr.push(i)
+			}
+		}
+		console.info(arr)
+	}
+	
+}
+times.getFulTime(new Date())
+times.getSturday()
+
+/*
+2.给定用户的生日 计算该用户的年龄
+*/
+console.info(myFun.getAge(1992,2,29));
+console.info(myFun.getDaysToBirthday(10,21))
+console.info(myFun.getDay('',2020,2))

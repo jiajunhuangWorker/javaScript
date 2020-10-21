@@ -115,3 +115,257 @@ var a = (10 * 3 - 4 / 2 + 1) % 2;//1
 	b = a-b;
 	a = a-b;
 	console.info(a,b)
+
+// 原始类型当对象使用
+console.info(parseInt(103,2))
+
+//得到最小值到最大值区间随机数
+function getRandom(min,max){
+	return Math.floor(Math.random()*(max+1 - min ) + min)
+}
+
+var a = 1.323231312
+console.info(a.toPrecision())
+
+//Strig
+var str1 ='abc\
+bcd'
+var str2 =`abc\
+	bcd
+	你好啊大苏打阿萨`;
+
+console.info(str1)
+console.info(str2)
+
+// 静态成员
+var str ='';
+for(var i = 65;i<65+26;i++){
+	str += String.fromCharCode(i);
+}
+console.info(str);
+
+console.info(String.fromCharCode(Infinity));
+
+//实例成员
+var n="abcdef";
+console.info(n)
+console.info('n.charAt:',n.charAt(0))
+console.info('n.charCodeAt:',n.charCodeAt(0))
+console.info('n.includes',n.includes('ac'))
+console.log('n.endsWith',n.endsWith('c'))
+
+var hour=2,minute = 8,second = 20;
+// 时分秒
+console.info(`${hour.toString().padStart(2,"0")}\:${minute.toString().padStart(2,"0")}\:${second.toString().padStart(2,"0")}`);
+
+console.info(n.repeat(3))
+console.info('n=',n);
+console.info('n.slice(1,3)',n.slice(1,3))
+console.info('n.slice(3,1)',n.slice(3,1))
+console.info('n.slice(-3,-1)',n.slice(-3,-1))
+console.info('n.substring(1,3)',n.substring(1,3))
+console.info('n.substring(3,1)',n.substring(3,1))
+console.info('n.substring(-3,-1)',n.substring(-3,-1))
+console.info('n.substr(1,3)',n.substr(1,3))
+console.info('n.substr(3,1)',n.substr(3,1))
+console.info('n.substr(-3,-1)',n.substr(-3,-1))
+
+console.info('n.split("")',n.split(""))
+console.info('n.split("")',n.split("").join("!"))
+
+
+// homeWork
+/*
+1.找到某个字符串中出现最多的字符,打印出字符和它的出现次数
+2.hello world -> HelloWorld
+3.指定长度 随机数字
+4.字符串顺序重新升序
+5.身份证用户年月日和性别保存到对象
+*/
+var str ={
+	str:'',
+	component(){
+		var strL=this.str.split(''),obj={},result={name:'',num:''};
+		strL.filter(function(val){
+			if(typeof obj[val] == 'undefined' && val != " "){
+				obj[val] = 1;
+			}else{
+				obj[val]+=1;
+			}
+		})
+		Object.keys(obj).forEach(function(key){
+			if(result.num == ''){
+				result={
+					name:key,
+					num:obj[key]
+				};
+			}else{
+				if(obj[key]>result.num){
+					result={
+						name:key,
+						num:obj[key]
+					};
+				}
+			}
+		})
+		console.info(result)
+		return result;
+	},
+	getTranStr(){
+		var keep='',result='';
+		this.str.split('').filter(function(a,b){
+			if(b == 0){
+				keep=a;
+				result+=keep.toUpperCase();
+				console.info(result)
+			}else if(a !=" "){
+				if(this.str.str.charAt(b-1)!=" "){
+					result += a;
+				}else{
+					keep=a;
+					result+=keep.toUpperCase();
+				}
+			}
+		})
+		console.info(result);
+		return result;
+	},
+	getRandomStr(len){
+		var str=[],result="";
+		for(var i= 48;i<=122;i++){
+			if (i!=58&&i!=59&&i!=60&&i!=61&&i!=62&&i!=63&&i!=64&&i!=91&&i!=92&&i!=93&&i!=94&&i!=95&&i!=96) {
+				str.push(String.fromCharCode(i))
+			}
+		}
+		console.info(str)
+		for(var i=0;i<len;i++){
+			var getVal =str[parseInt(Math.round(Math.random()*str.length))];
+			if(getVal){
+				result+=getVal;
+			}else{
+				result+='a';
+			}
+		}
+		return result;
+	},
+	getValSort(){
+		var val =[];
+		this.str.split("").filter(function(value) {
+			if(value!=" "){
+				val.push(value);
+			}
+		});
+		val.sort(function(a,b){
+			return a.charCodeAt() - b.charCodeAt()
+		})
+		console.info(val)
+		return val
+	},
+	sfz(){
+		var oj = {
+			birthYear:null,
+			birthMonth:null,
+			birthDay:null,
+			gender:null
+		}
+		oj['birthYear']=this.str.substring(6,10);
+		oj['birthMonth']=this.str.substring(10,12).indexOf('0')? this.str.substring(10,12):this.str.substring(11,12);
+		oj['birthDay']=this.str.substring(12,14).indexOf('0')? this.str.substring(12,14):this.str.substring(13,14);
+		oj['gender']=this.str.slice(this.str.length-2,this.str.length-1) % 2 ===0? "女":"男";
+		console.info(oj)
+	}
+}
+
+str.str = 'ab c a a c  zscc  cass wew z';
+str.component();
+str.getTranStr();
+str.getRandomStr(5);
+str.getValSort()
+str.str ="524713199712220054";
+str.sfz();
+
+/*
+1.找到某个字符串中出现最多的字符,打印出字符和它的出现次数
+2.hello world -> HelloWorld
+3.指定长度 随机数字
+4.字符串顺序重新升序
+5.身份证用户年月日和性别保存到对象
+*/
+var MyFun={
+	getTopFreqInArray:function(arr){
+		var valArr =Array.from(arr),records={},result;
+		for(var i=0; i<valArr.length;i++){
+			var n = valArr[i];
+			if(records[n]){
+				records[n]++;
+			}else{
+				records[n]=1;
+			}
+		}
+		for(var prop in records){
+			if(!result || records[prop] > result.num){
+				result = {
+					val:prop,
+					num:records[prop]
+				}
+			}
+		}
+		console.info(result)
+		return result;
+	},
+	strTurn(str){
+		var result="",empties=" \t\r\n";
+		for(var i=0;i<str.length;i++){
+			if(!empties.includes(str[i])){
+				if(empties.includes(str[i - 1])||i === 0){
+					result +=str[i].toUpperCase();
+				}else{
+					result +=str[i];
+				}
+			}
+		}
+		console.info(result)
+		return result;
+	},strTurn2(str){
+		var result="",empties=" \t\r\n";
+		result =str.split(" ").filter(function(item){
+			return item.length>0;
+		}).map(function(item){
+			return item[0].toUpperCase()+item.substring(1).toLowerCase();
+		}).join('');
+		console.info(result);
+		return result;
+	},
+	strRedom(len){
+		var tpl = "",result = "";
+		for(var i=65;i<65+26;i++){
+			tpl +=String.fromCharCode(i)
+		}
+		for(var i=97;i< 97+26;i++){
+			tpl +=String.fromCharCode(i)
+		}
+		for(var i=48;i<48+10;i++){
+			tpl+=String.fromCharCode(i)
+		}
+		for(var i=0;i<len;i++){
+			result+=tpl[this.getRandom(0,tpl.length-1)];
+		}
+		console.info(result);
+		return result;
+	},
+	getRandom(min,max){
+		return Math.floor(Math.random()*(max+1-min)+min);
+	},
+	getSort(str){
+		return Array.from(str).sort().join('');
+	},sfz(str){
+		return {
+			birthYear:str.s
+		}
+	}
+}
+MyFun.getTopFreqInArray('ab c a a c  zscc  cass wew z');
+MyFun.strTurn('ab c a a c  zscc  cass wew z');
+MyFun.strTurn2('ab c a a c  zscc  cass wew z');
+MyFun.strRedom(6);
+MyFun.sfz(524713199712220054)

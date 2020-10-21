@@ -160,3 +160,10 @@ console.log("parseInt('123abc')",parseInt('123abc'));//123
 var num=123123.345789;
 console.log(num+"toFixed(3)",num.toFixed(3));//123123.345
 console.log(typeof typeof z)
+
+
+/*
+Math
+*/
+console.info(Math.PI)
+console.info(Math.abs(-2))

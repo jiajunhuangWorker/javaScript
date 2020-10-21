@@ -278,3 +278,29 @@ function Student2(name,age,sex,tel,grade){
 }
 var student2 = new Student2('sunny','22','male',139,2017)
 console.info(student2)
+
+// 伪数组转真数组
+function test(a,b){
+	console.info(arguments);
+	// 将arguments 转换为真数组
+
+	var newArr = [].slice.call(arguments);
+	console.info(newArr)
+	console.info('a',a,'b',b);
+	console.info('c',this.c,'d',this.d)
+}
+var user = {
+	c:'1',
+	d:'2'
+}
+test(2,3,45,'ewqe');
+
+test.call(user,'call1','call2');
+
+test.apply(user,['apply1','apply2']);
+
+var newFun= test.bind(user,'bind1','bind2')
+newFun();
+
+
+

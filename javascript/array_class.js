@@ -220,3 +220,103 @@ String.prototype.onlyUnit =function(){
 }
 var str= 'aeqweqiuyrsfjkdshfnmxnczewyrtydhf'.onlyUnit();
 console.info(str)
+
+
+/*
+数组静态成员
+*/
+function test2(){
+	console.info(Array.isArray(arguments))
+	var newArr= Array.from(arguments)
+	console.info(newArr,Array.isArray(newArr))
+}
+test2(1,2,3,4,5,6,7,8);
+
+var arr = Array.of(1,23,4,5,'a',true);
+console.info(arr)
+
+var nArr = new Array(200);
+nArr.fill('aa');
+console.info(nArr)
+
+var arr1 = [1,2,3];
+var arr2 = [4,2,3];
+var arr3 = [7,2,3];
+
+console.info(arr1.concat(arr2,arr3))
+
+// includes
+console.info('arr1.includes(4)',arr1.includes(4),'arr1.includes(3)',arr1.includes(3),'arr1.includes(3,2)',arr1.includes(3,2));
+
+// forEach
+arr1.forEach(function(item,i,a){
+	console.info('item',item,'i:',i,'a:',a);
+})
+//every
+var bol= arr1.every(function(item){
+	return item>2;
+})
+console.info(bol)
+//some
+var bol2= arr1.some(function(item){
+	return item>2;
+})
+console.info(bol2)
+//得到所有大于或等于2的数值
+var bol3= arr1.filter(function(item){
+	return item>=2;
+})
+console.info(bol3)
+//find(
+var bol4=arr.find(function(item){
+	return item>2
+})
+console.info(bol4)
+//findIndex
+var bol5=arr.findIndex(function(item){
+	return item>5
+})
+console.info(bol5)
+//map
+var bol6= arr1.map(function(item,i){
+	return {
+		name:'测试'+i,
+		score:item
+	}
+})
+console.info(bol6)
+
+//reduce
+var bol7= arr1.reduce(function(a,b){
+	console.info('回调')
+	return a+b;
+},0)
+console.info(bol7)
+
+//链式编程
+// 先对数组进行随机排序
+//只取几个的分数
+//得到学生对象的数组
+var result = arr1.sort(function(){
+	return Math.random()-0.5;
+}).filter(function(item){
+	return item>=2
+}).map(function(item,i){
+	return {
+		name:'测试'+i,
+		score:item
+	}
+})
+console.info(result)
+
+/*homeWork
+去掉数组中的负数,然后对每一项平方,然后对每一项翻倍.然后求和
+*/
+var arrHome = [1,2,3,4,5,6,-1,-5];
+var results= arrHome.filter(function(item) {
+	return item>=0
+}).reduce(function(a,b){
+	console.info(Math.pow(b,2))
+	return a+(Math.pow(b,2)*2)
+},0);
+console.info(results)

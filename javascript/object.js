@@ -1,7 +1,20 @@
 /*
-数组
-*/
+构造函数
+对象中的属性,如果是一个函数也称该属性为对象的方法
+1.用于创建对象的函数
+2.构造函数
 
+new 函数(参数)
+构造函数 专门用于创建对象
+1)函数名使用大驼峰命名法
+2)构造函数内部,会自动创建一个新的对象,this 指向心创建的对象,并且自动返回新对象
+3)构造函数中如果出现返回值,如果返回的原始类型,直接忽略,如果返回引用类型则直接返回引用结果
+4)所有的对象,最终是通过构造函数创建的
+
+
+
+*/
+console.info(typeof Array)
 /*
 对象
 */
@@ -86,9 +99,20 @@ function Person(name,height){
 	return that;
 }
 console.info(new Person('xiaoJun',18).name)
-
+var ps=new Person(1,2)
+console.info(ps)
 /*
 包装类
+JS为了增强原始类型功能为boolean,string,number 分别创建了构造函数
+ 如果语法上,将原始类型当作对象使用时,JS会自动在该位置利用对应的构造函数(使用一般的属性),创建对象来访问原始类型的属性
+
+类：在JS中,可以认为,类就是构造函数
+
+成年方法,实例方法 :通过new 创建出来的方法
+
+
+静态属性,类属性 表示该属性是通过构造函数本身调用
+Number.isNaN(静态方法)
 */
 var num = new Number(123);
 var str = new String('123');
@@ -165,3 +189,72 @@ function add(n){
 z = add(x);//4
 console.info(add(x))
 console.info(x)
+
+// new.target
+/*
+通常用于判断某个函数是不是 new 创建出来的
+*/
+function User(){
+	console.info(new.target)
+	if(new.target == User){
+		this.x = 11;
+	}else{
+		return {
+			x:'11'
+		}
+	}
+}
+
+/*
+函数的本质是对象
+某些教程中,将构造函数称为构造器
+所有的都西昂都是能通过关键字new 出现的 new 构造函数()
+
+所有的函数都是通过new Function 创建
+
+Function -> 产生函数对象 -> 产生普通对象Object Array String
+
+由于函数本身就是对象,因此函数中能拥有各种属性
+*/
+
+var sum  = new Function("a","b","return a+b");
+console.info(typeof sum);
+console.info(sum(3,5));
+
+function User(firstChild,lastChild){
+	this.firstChild = firstChild;
+	this.lastChild = lastChild;
+	thif.name = this.firstChild +' '+this.lastChild;
+}
+
+
+/*
+标准库(标准API)
+库:liberary
+API:应用程序标准接口 Application Programing Interface
+标准:ECMAScript标准
+*/
+/*
+Object
+*/
+console.info('new Object(null):',new Object(null),'new Object(undefined):',new Object(undefined),'new Object(1):',new Object(1),'new Object("22dasd"):',new Object("22dasd"))
+
+var obj ={a:123,b:234,c:312312};
+
+console.info('Object.keys:',Object.keys(obj))
+console.info('Object.values:',Object.values(obj))
+console.info('Object.entries:',Object.entries(obj))
+
+/*实例和原型*/
+console.info(obj.toString());
+console.info(obj.valueOf() == obj)
+
+/*arguments*/
+function test2(a,b){
+	arguments[0]=123;
+	b = 666;
+	console.info('a',a,'b',b)
+	console.info(arguments)
+}
+test2(undefined,undefined,3,3,4)
+

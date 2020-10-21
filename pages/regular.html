@@ -4,16 +4,86 @@
 	<meta charset="UTF-8">
 	<title>正则表达式</title>
 	<link rel="stylesheet" href="../css/index.css">
-	<style type="text/css">
-	/*div{
-		width:100px;
-		height:100px;
-		background:#fff;
-	}*/
-	</style>
 </head>
 	<body>
-		<!-- <div></div> -->
+		<dl>
+			<dt>正则表达式</dt>
+				<dd>正则表达式是国际标准,跨越语言</dd>
+				<dd>正则表达式是一个规则,用于校验字符串</dd>
+			<dt>基础</dt>
+				<dd>1.字面量匹配</dd>
+					<dd>规则中直接书写字面量字符</dd>
+				<dd>2.特殊字符</dd>
+					<dd>. 匹配任何字符(除了换行)</dd>
+					<dd>^ 匹配字符串的开始部分</dd>
+					<dd>$ 匹配字符串的末尾部分</dd>
+				<dd>3.转义符</dd>
+					<dd>\n 换行符</dd>
+					<dd>\r 回车符(window 使用 其它系统不匹配)</dd>
+					<dd>\t 制表符 </dd>
+					<dd>\s 匹配空白字符(空格,制表,换行)</dd>
+					<dd>\S 和\s 相反</dd>
+					<dd>\b 单词的边界 \bhellow\b</dd>
+					<dd>\B 非单词的边界</dd>
+					<dd>\d 匹配0-9数字</dd>
+					<dd>\D 非数字</dd>
+					<dd>\w 字母数字下划线[a-zA-Z0-9_]</dd>
+					<dd>\W 匹配非字母数字下划线</dd>
+					<dd>\un 匹配十六进制的中文 unicode</dd>
+					<dd>\ 转义符可以转移为特殊字符</dd>
+				<dd>4.字符集</dd>
+					<dd>[字符范围] 匹配一个字符
+						[a-z] 26个英文字母
+						[A-Z] 26个大写的英文字母
+						[\u4e00 - \u9FA5] 中文
+						[^0-9] 匹配非数字
+					</dd>
+				<dd>5.量词</dd>
+					<dd>前面的规则出现次数</dd>
+					<dd>* 匹配0次或者多次  </dd>
+					<dd>+ 匹配1个或者多个</dd>
+					<dd>? 匹配0个或者1个</dd>
+					<dd>{数字,数字} 匹配的范围它是指前面一个的规则 </dd>
+				<dd>6.或者</dd>
+					<dd>| 多个规则之间,适用或者表示多个规则任选其一</dd>
+					<dd>() 括号内的规则整合在一起</dd>
+			<dt>js中的应用</dt>
+				<dd>js中,正则表达式表现为一个对象,该对象是通过构造函数RegExp</dd>
+				<dd>创建正则对象</dd>
+					<dd>1.字面量创建</dd>
+					<dd>2.构造函数创建</dd>
+					<dd>在构造函数中有一个flags 标志 </dd>
+					<dd>g 全局搜</dd>
+					<dd>i 忽略大小写</dd>
+					<dd>m 多行匹配</dd>
+				<dd>实例成员</dd>
+					<dd>new RegExp().global 是否全局匹配 callback:boolean</dd>
+					<dd>new RegExp().ignoreCase 是否忽略大小写 callabck:boolean</dd>
+					<dd>new RegExp().multiline 是否多行匹配 callabck:boolean</dd>
+					<dd>new RegExp().source 当前的规则 callabck:string</dd>
+					<dd>new RegExp().text(stiring) 是否满足规则 callback:boolean 如果开启g模式会发生变化  当全局模式的时候就会记录前一个的位置</dd>
+					<dd>正则表达式,默认情况下是使用贪婪模式 /\d+/g</dd>
+					<dd>正则表达式,懒惰模式 /\d+?/g</dd>
+					<dd>test callback:boolean</dd>
+					<dd>exec callback:Array</dd>
+					<dd>字符串的 </dd>
+					<dd>match callback:array</dd>
+					<dd>search callback:index 匹配项的下标</dd>
+					<dd>split callback:Array  </dd>
+					<dd>replace callback:string(原来字符串不变)</dd>
+					<dd>((h2>{第$章}) + (p*5>lorem))*5 在编辑软件中生成章节数</dd>
+			<dt>进阶</dt>
+				<dd>捕获组</dd>
+					<dd>用小括号包裹的部分,捕获组回出现在匹配结果中</dd>
+				<dd>非捕获组</dd>
+					<dd>(?:)</dd>
+				<dd>反向引用</dd>
+					<dd>正则中使用某个捕获组 '''\捕获组编号'''</dd>
+				<dd>正向断言(预查)</dd>
+				<dd>检查某个字符后面的字符是否满足某个规则,该规则不成为捕获结果</dd>
+				<dd>反向断言</dd>
+				<dd>(?=)</dd>
+		</dl>
 	</body>
 </html>
 
