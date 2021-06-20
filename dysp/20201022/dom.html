@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>懒加载</title>
+	<style type="text/css">
+		body{
+			width:3000px;
+			height:3000px;
+		}
+		div{
+			width:200px;
+			height:200px;
+			background:red;
+			top:1000px;
+			left:200px;
+			position:absolute;
+		}
+	</style>
+</head>
+<body>
+	<div id="demo" style="opacity:0.3"></div>
+	<iframe src="./iframe.html" width="500"  height="500"></iframe>
+</body>
+<script type="text/javascript">
+	var num = 111;
+	function check(id){
+		var oDiv = document.getElementById(id);
+		if(oDiv.offsetTop <= window.pageYOffset + window.innerHeight){
+			oDiv.timer = setInterval(function(){
+				if (oDiv.style.opacity == '1') {
+					clearInterval(oDiv.timer)
+				}else{
+					oDiv.style.opacity = parseFloat(oDiv.style.opacity)+0.01;
+				}
+			},30)
+		}
+	}
+	window.onscroll = function(){
+		check('demo')
+	}
+	console.info('window.self == window ： 防止iframe 冲突',window.self == window)
+
+	// window.onbeforeunload = function(){
+	// 	return 'aaa';
+	// }
+	window.open('https://www.baidu.com','duyi','width=500,height=500')
+	// window.self.close();
+
+	// Navigator 对象属性(嗅探 当前是什么浏览器)
+	console.info(navigator.appName) //相当于老祖宗
+	console.info(navigator.userAgent)//浏览器的信息
+	console.info(navigator.cookieEnabled)//浏览器是否则启用cookie
+	console.info(navigator.onLine)//浏览器是否离线模式
+
+	// History 对象
+	console.info(history.length)
+	console.info(history.back())//回退一个
+	console.info(history.go(-2))//往前跳
+	console.info(history.forword())//history 列表中下一个url
+
+	// Location 对象
+	// 资源管理器
+	// 协议(http,https),域名( ),端口(number),路径(/),参数(?),锚点(#)
+	console.info(location.protocol)//协议
+	console.info(location.host)//域名
+	console.info(location.pathname)//路径
+	console.info(location.search)//参数
+	console.info(location.hash)//锚点(单页面应用)
+	console.info(location.assign('https://www.baidu.com'));//加载最新的资源
+	console.info(location.reload())// true重新从服务端拿数据   false 缓存
+	
+	// Screen对象
+	// 屏幕的属性
+</script>
+</html>

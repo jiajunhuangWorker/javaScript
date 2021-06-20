@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>懒加载</title>
+	<style type="text/css">
+		body{
+			width:3000px;
+			height:3000px;
+		}
+		div{
+			width:200px;
+			height:200px;
+			background:red;
+			top:1000px;
+			left:200px;
+			position:absolute;
+		}
+	</style>
+</head>
+<body>
+	<div id="demo" style="opacity:0.3"></div>
+</body>
+<script type="text/javascript">
+	//无法访问父窗口,因为同源策略
+	// console.info(window.parent.a)
+</script>
+</html>
